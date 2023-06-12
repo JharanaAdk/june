@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+{% block title %}Book{% endblock title %}
+{% block content %}
+<h1>Book data display</h1>
+{% for book in book %}
+<div class="card" style="width: 18rem;">
+    <div class="card-body">
+      <h5 class="card-title">{{book.name}}</h5>
+      <p class="card-text">{{book.description}}</p>
+      <a href="#" class="btn btn-primary">{{book.price}}</a>
+      <a href="#" class="btn btn-danger">{{book.author}}</a>
+      <a href="#" class="btn btn-warning">{{book.published_date}}</a>
+    </div>
+  </div>
+{% endfor %}
+{% endblock content %}

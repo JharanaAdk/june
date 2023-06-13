@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+{% block title %}
+Author 
+{% endblock title %}
+{% block content %}
+<table class="table">
+    <thead>
+      <tr>
+        <th scope="col">S.N.</th>
+        <th scope="col">Author Name</th>
+        <th scope="col">Age</th>
+        <th scope="col">Journal</th>
+      </tr>
+    </thead>
+    <tbody>
+        {% for  items in author %}
+      <tr>
+        <th scope="row">{{items.id}}</th>
+        <td>{{items.name}}</td>
+        <td>{{items.age}}</td>
+        <td>{{items.journal}}</td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+{% endblock content %}

@@ -7,6 +7,8 @@ urlpatterns = [
     path('', views.index, name="index"),
     path('about/', views.about, name="about"),
     path('book/', views.book, name="book"),
+    path('contact/', views.contact, name="contact"),
+    path('author/', views.author, name="author")
 ]
 if settings.DEBUG:
     urlpatterns += static(settings.MEDIA_URL, documnet_root=settings.MEDIA_ROOT)

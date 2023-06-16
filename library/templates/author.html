@@ -3,13 +3,17 @@
 Author 
 {% endblock title %}
 {% block content %}
-<table class="table">
+<section>
+  <a href="{% url 'createauthor' %}" class="float-end btn btn-success">Create</a>
+  <div class="m-3 container">
+    <table class="table">
     <thead>
       <tr>
         <th scope="col">S.N.</th>
         <th scope="col">Author Name</th>
         <th scope="col">Age</th>
         <th scope="col">Journal</th>
+        <th scope="col">Action</th>
       </tr>
     </thead>
     <tbody>
@@ -19,8 +23,15 @@ Author
         <td>{{items.name}}</td>
         <td>{{items.age}}</td>
         <td>{{items.journal}}</td>
+        <td>
+          <a href="#" class="btn btn-warning">Edit</a>
+          <a href="{% url 'readauthor' items.id %}" class="btn btn-primary">Read</a>
+          <a href="#" class="btn btn-danger">Delete</a>
+        </td>
       </tr>
       {% endfor %}
     </tbody>
   </table>
+</div>
+</section>
 {% endblock content %}

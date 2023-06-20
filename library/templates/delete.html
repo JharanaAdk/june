@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+{% block title %}
+Delete author
+{% endblock title %}
+{% block content %}
+<section class="m-5">
+    <h1>Delete author</h1>
+    <h2> Are you sure you want to delete {{author.name}} of {{author.age}} age??
+    <div class="container">
+        <form action="" method="POST">
+            {% csrf_token %}
+            {{form.as_p}}
+            <button type="submit" class="btn btn-danger">Delete </button>
+        </form>
+        <a href="{% url 'author' %}" class="btn btn-primary">Cancle</a>
+    </div>
+
+</section>
+
+{% endblock content %}

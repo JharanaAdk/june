@@ -24,9 +24,9 @@ Author
         <td>{{items.age}}</td>
         <td>{{items.journal}}</td>
         <td>
-          <a href="#" class="btn btn-warning">Edit</a>
+          <a href="{% url 'editauthor' items.id %}" class="btn btn-warning">Edit</a>
           <a href="{% url 'readauthor' items.id %}" class="btn btn-primary">Read</a>
-          <a href="#" class="btn btn-danger">Delete</a>
+          <a href="{% url 'deleteauthor' items.id %}" class="btn btn-danger">Delete</a>
         </td>
       </tr>
       {% endfor %}

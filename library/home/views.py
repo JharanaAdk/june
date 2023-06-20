@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect
 from . models import Books, Author
-from . forms import AuthorForm
+from . forms import AuthorForm, UserCreationForm
 # Create your views here.
 def index(request):
     return render(request, "index.html")
@@ -39,3 +39,33 @@ def readauthor(request, author_id):
     author = Author.objects.get(id=author_id)
     context ={'author':author}
     return render(request, 'readauthor.html', context)
+
+
+def editauthor(request, author_id):
+    author = Author.objects.get(id=author_id)
+    if request.method == 'POST':
+        form = AuthorForm(instance=author)
+        form = AuthorForm(request.POST, instance=author)
+        if form.is_valid():
+            form.save()
+            return redirect('author')
+    else:
+        form = AuthorForm(instance=author)
+    return  render(request, 'edit_author.html', {'form':form})
+    
+def deleteauthor(request, author_id):
+    author = Author.objects.get(id=author_id)
+    if request.method =="POST":
+        author.delete()
+        return redirect('author')
+    else:
+        return render(request, 'delete.html', {'author':author})
+def register(request):
+    if request.method == "POST":
+        form = UserCreationForm(request.POST)  
+        if form.is_valid():
+            form.save()
+            return redirect('index')
+    else:
+        form = UserCreationForm()
+    return render(request, 'auth/register.html', context={'form':form})

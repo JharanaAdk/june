@@ -11,6 +11,12 @@ urlpatterns = [
     path('author/', views.author, name="author"),
     path('createauthor/', views.createauthor, name="createauthor"),
     path('readauthor/<int:author_id>/', views.readauthor, name="readauthor"),
+    path('editauthor/<int:author_id>/', views.editauthor, name="editauthor"),
+    path('deleteauthor/<int:author_id>/', views.deleteauthor, name="deleteauthor"),
+    
+    
+    # authntication and authorization urls
+    path('register', views.register, name="register"),
 ]
 if settings.DEBUG:
     urlpatterns += static(settings.MEDIA_URL, documnet_root=settings.MEDIA_ROOT)

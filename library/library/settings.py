@@ -143,3 +143,14 @@ STATICFILES_DIRS =[
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 LOGIN_REDIRECT_URL = 'index'
+
+
+
+
+# for  sending reset password email
+EMAIL_HOST ="smtp.gmail.com"
+EMAIL_USE_TLS = True
+EMAIL_HOST_USER ='jharanaadhikari.xdezo@gmail.com'
+EMAIL_HOST_PASSWORD = 'tnszucnjoynzxneu'
+EMAIL_PORT = 587
+ACCOUNT_EMAIL_VERIFCATION = 'none'

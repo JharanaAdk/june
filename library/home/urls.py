@@ -18,11 +18,12 @@ urlpatterns = [
     
     # authntication and authorization urls
     path('register', views.register, name="register"),
+    path('logout', views.logout_view, name="logout"),
     path('login/', auth_views.LoginView.as_view(template_name='auth/login.html'), name="login"),
     path('password_reset/', auth_views.PasswordResetView.as_view(template_name="auth/password_reset.html"), name="password_reset"),
     path('password_reset_done/', auth_views.PasswordResetDoneView.as_view(template_name='auth/password_reset_done.html'), name="password_reset_done"),
-    path('password_reset_confirm/<uidb64>/<token>/', auth_views.PasswordResetConfirmView.as_view(template_name="password_reset_confirm.html"), name="password_reset_confirm"),
-    path('password_reset_complete/', auth_views.PasswordResetCompleteView.as_view(template_name="password_reset_complete"), name="password_reset_complete"),
+    path('password_reset_confirm/<uidb64>/<token>/', auth_views.PasswordResetConfirmView.as_view(template_name="auth/password_reset_confirm.html"), name="password_reset_confirm"),
+    path('password_reset_complete/', auth_views.PasswordResetCompleteView.as_view(template_name="auth/password_reset_complete.html"), name="password_reset_complete"),
     
 ]
 if settings.DEBUG:

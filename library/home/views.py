@@ -1,7 +1,13 @@
 from django.shortcuts import render, redirect
 from . models import Books, Author
 from . forms import AuthorForm, UserCreationForm
+from django.contrib.auth import logout
 # Create your views here.
+
+def logout_view(request):
+    logout(request)
+    return redirect('index')
+
 def index(request):
     return render(request, "index.html")
 

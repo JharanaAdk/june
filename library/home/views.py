@@ -1,6 +1,8 @@
 from django.shortcuts import render, redirect
+from django.core.mail import send_mail, BadHeaderError
+from django.http import HttpResponse
 from . models import Books, Author
-from . forms import AuthorForm, UserCreationForm
+from . forms import *
 from django.contrib.auth import logout
 # Create your views here.
 
@@ -75,3 +77,31 @@ def register(request):
     else:
         form = UserCreationForm()
     return render(request, 'auth/register.html', context={'form':form})
+
+
+
+
+def contact(request):
+    if request.method =="GET":
+        contact_form = ContactForm
+        return render(request, 'contact.html', context={'form': contact_form})
+    else:
+        contact_form = ContactForm(request.POST)
+        if contact_form.is_valid():
+            contact_form.save()
+            subject ="this is contact xyz.website"
+            body={
+                'full_name': contact_form.cleaned_data['full_name'],
+                'email': contact_form.cleaned_data['email'],
+                'subject': contact_form.cleaned_data['subject'],
+                'message': contact_form.cleaned_data['message'],
+            }
+            message="\n".join(body.values())
+            try:
+                send_mail(subject, message, 'jharanaadhikari.xdezo@gmail.com', ['jharanaadhikari.xdezo@gmail.com'])
+            except BadHeaderError:
+                return HttpResponse('Invalid bound')
+            return redirect("index")
+    return render(request, 'contact.html', context={'form': contact_form})
+            
+            

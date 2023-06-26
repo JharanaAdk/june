@@ -24,3 +24,11 @@ class Books(models.Model):
        return str(self.name)
    
     
+class Contact(models.Model):
+    full_name = models.CharField(max_length=200)
+    email = models.EmailField()
+    subject = models.CharField(max_length=200)
+    message = models.TextField(max_length=350)
+    
+    def __str__(self):
+        return str(self.full_name)

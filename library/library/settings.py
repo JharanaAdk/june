@@ -154,3 +154,6 @@ EMAIL_HOST_USER ='jharanaadhikari.xdezo@gmail.com'
 EMAIL_HOST_PASSWORD = 'tnszucnjoynzxneu'
 EMAIL_PORT = 587
 ACCOUNT_EMAIL_VERIFCATION = 'none'
+
+
+APPEND_SLASH = False

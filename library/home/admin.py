@@ -5,3 +5,4 @@ from . models import *
 admin.site.register(Author)
 admin.site.register(Books)
 admin.site.register(Contact)
+admin.site.register(Blog)

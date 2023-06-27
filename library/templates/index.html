@@ -26,6 +26,16 @@
     <span class="visually-hidden">Next</span>
   </button>
 </div>
-
-
+<h1>Trending Blogs</h1>
+{% for blog in blog %}
+<div class="card" style="width: 18rem;">
+  <a href="{% url 'blogviews' blog.slug %}">
+    <div class="card-body">
+      
+      <h5 class="card-title">{{blog.title}}</h5>
+      <h1 href="#" class="btn btn-primary">{{blog.written_by}}</h1>
+      <h1 href="#" class="btn btn-danger">plublished_at:{{blog.created_at}}</h1>
+    </div>
+  </div>
+{% endfor %}
 {% endblock content %}

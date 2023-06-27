@@ -1,0 +1,10 @@
+{% extends 'base.html' %}
+{% block title %}
+Blog
+{% endblock title %}
+{% block content %}
+<div class="m-5 bordered">
+    <h1 class="text-danger">{{blog.title}}</h1>
+    <h6 class="text-danger">{{blog.description|safe}}</h6>
+</div>
+{% endblock content %}

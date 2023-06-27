@@ -1,7 +1,8 @@
+from pyexpat.errors import messages
 from django.shortcuts import render, redirect
 from django.core.mail import send_mail, BadHeaderError
 from django.http import HttpResponse
-from . models import Books, Author
+from . models import *
 from . forms import *
 from django.contrib.auth import logout
 # Create your views here.
@@ -11,7 +12,9 @@ def logout_view(request):
     return redirect('index')
 
 def index(request):
-    return render(request, "index.html")
+    blog= Blog.objects.filter(trending=1)
+    context = {'blog':blog}
+    return render(request, "index.html", context)
 
 def author(request):
     author = Author.objects.all()
@@ -105,3 +108,16 @@ def contact(request):
     return render(request, 'contact.html', context={'form': contact_form})
             
             
+def blogindex(request):
+    blog = Blog.objects.filter(status=0)
+    context = {'blog': blog}
+    return render(request, "blog/blogindex.html", context)
+
+def blogviews(request, slug):
+    if(Blog.objects.filter(slug=slug, status=0)):
+        blog = Blog.objects.filter(slug=slug).first()
+        context ={'blog':blog}
+        return render(request, 'blog/blogviews.html', context)
+    else:
+        messages.warning(request, "No such blog")
+        return redirect('blogindex')
